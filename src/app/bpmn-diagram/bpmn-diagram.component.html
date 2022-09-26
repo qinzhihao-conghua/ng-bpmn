@@ -1,0 +1,88 @@
+<section class="main-container">
+  <header>
+    <input (change)="openBpmn($event)" type="file" name="file" multiple="multiple" />
+    <button (click)="createNewDiagram()">新建</button>
+    <button (click)="fitViewport()">自适应</button>
+    <button (click)="zoomViewport(true)">放大</button>
+    <button (click)="zoomViewport(false)">缩小</button>
+    <button (click)="undo()">后退</button>
+    <button (click)="redo()">前进</button>
+    <button (click)="saveXML(true)">下载xml</button>
+    <button (click)="saveImg('svg', true)">下载svg</button>
+    <button (click)="save()">保存模型</button>
+  </header>
+  <section class="content-main">
+    <main class="diagram-main">
+      <div id="demo" class="diagram-container"></div>
+    </main>
+    <aside class="properties">
+      <div id="properties"></div>
+      <div *ngIf="nodeName()" class="node-name">{{ nodeName() }}</div>
+      <ng-container [ngSwitch]="nodeData?.$type">
+        <app-process *ngSwitchCase="'bpmn:Process'" [modeler]="modeler" [element]="element" [nodeData]="nodeData">
+        </app-process>
+        <app-task *ngSwitchCase="'bpmn:Task'" [modeler]="modeler" [element]="element" [nodeData]="nodeData">
+        </app-task>
+        <app-business-rule-task *ngSwitchCase="'bpmn:BusinessRuleTask'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-business-rule-task>
+        <app-complex-gateway *ngSwitchCase="'bpmn:ComplexGateway'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-complex-gateway>
+        <app-end-event *ngSwitchCase="'bpmn:EndEvent'" [modeler]="modeler" [element]="element" [nodeData]="nodeData">
+        </app-end-event>
+        <app-event-based-gateway *ngSwitchCase="'bpmn:EventBasedGateway'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-event-based-gateway>
+        <app-exclusive-gateway *ngSwitchCase="'bpmn:ExclusiveGateway'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-exclusive-gateway>
+        <app-inclusive-gateway *ngSwitchCase="'bpmn:InclusiveGateway'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-inclusive-gateway>
+        <app-intermediate-throw-event *ngSwitchCase="'bpmn:IntermediateThrowEvent'" [modeler]="modeler"
+          [element]="element" [nodeData]="nodeData">
+        </app-intermediate-throw-event>
+        <app-manual-task *ngSwitchCase="'bpmn:ManualTask'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-manual-task>
+        <app-parallel-gateway *ngSwitchCase="'bpmn:ParallelGateway'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-parallel-gateway>
+        <app-receive-task *ngSwitchCase="'bpmn:ReceiveTask'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-receive-task>
+        <app-script-task *ngSwitchCase="'bpmn:ScriptTask'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-script-task>
+        <app-send-task *ngSwitchCase="'bpmn:SendTask'" [modeler]="modeler" [element]="element" [nodeData]="nodeData">
+        </app-send-task>
+        <app-sequence-flow *ngSwitchCase="'bpmn:SequenceFlow'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-sequence-flow>
+        <app-service-task *ngSwitchCase="'bpmn:ServiceTask'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-service-task>
+        <app-start-event *ngSwitchCase="'bpmn:StartEvent'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-start-event>
+        <app-user-task *ngSwitchCase="'bpmn:UserTask'" [modeler]="modeler" [element]="element" [nodeData]="nodeData">
+        </app-user-task>
+        <app-sub-process *ngSwitchCase="'bpmn:SubProcess'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-sub-process>
+        <app-data-object-reference *ngSwitchCase="'bpmn:DataObjectReference'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-data-object-reference>
+        <app-data-store-reference *ngSwitchCase="'bpmn:DataStoreReference'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-data-store-reference>
+        <app-participant *ngSwitchCase="'bpmn:Participant'" [modeler]="modeler" [element]="element"
+          [nodeData]="nodeData">
+        </app-participant>
+        <app-group *ngSwitchCase="'bpmn:Group'" [modeler]="modeler" [element]="element" [nodeData]="nodeData">
+        </app-group>
+      </ng-container>
+    </aside>
+  </section>
+</section>
