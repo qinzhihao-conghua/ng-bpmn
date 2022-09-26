@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "bpmn-test": {
+    "ng-bpmn": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/bpmn-test",
+            "outputPath": "dist/ng-bpmn",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -75,18 +75,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bpmn-test:build"
+            "browserTarget": "ng-bpmn:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "bpmn-test:build:production"
+              "browserTarget": "ng-bpmn:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bpmn-test:build"
+            "browserTarget": "ng-bpmn:build"
           }
         },
         "test": {
@@ -123,15 +123,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "bpmn-test:serve"
+            "devServerTarget": "ng-bpmn:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "bpmn-test:serve:production"
+              "devServerTarget": "ng-bpmn:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "bpmn-test"
+  "defaultProject": "ng-bpmn"
 }
